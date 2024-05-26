@@ -66,11 +66,6 @@ const StyledPic = styled.div`
     &:hover,
     &:focus {
       outline: 0;
-      transform: translate(-4px, -4px);
-
-      &:after {
-        transform: translate(8px, 8px);
-      }
 
       .img {
         filter: none;

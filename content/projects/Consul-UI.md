@@ -2,7 +2,7 @@
 date: '2022-12-11'
 title: 'Consul Power UI'
 github: 'https://github.com/shweshi/consul-power-ui'
-external: ''
+external: 'https://github.com/shweshi/consul-power-ui'
 tech:
   - HTML
   - CSS

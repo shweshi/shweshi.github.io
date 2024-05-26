@@ -1,8 +1,8 @@
 ---
 date: '2021-02-15'
 title: 'Editpad'
-github: 'https://github.com/shweshi/email-concealer'
-external: 'https://github.com/shweshi/email-concealer'
+github: 'https://github.com/shweshi/editpad'
+external: 'editpad.shashi.dev'
 tech:
   - HTML
   - CSS

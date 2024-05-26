@@ -4,6 +4,7 @@ title: 'Laravel OpenGraph'
 cover: './opengraph.png'
 github: 'https://github.com/shweshi/OpenGraph'
 external: 'https://github.com/shweshi/OpenGraph'
+repo: 'OpenGraph'
 tech:
   - PHP
   - Laravel

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
@@ -22,6 +22,22 @@ const StyledProject = styled.li`
   grid-gap: 10px;
   grid-template-columns: repeat(12, 1fr);
   align-items: center;
+
+  .github-stats {
+    margin-top: 4px;
+
+    & > span {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 7px;
+    }
+    svg {
+      display: inline-block;
+      margin-right: 5px;
+      width: 20px;
+      height: 20px;
+    }
+  }
 
   @media (max-width: 768px) {
     ${({ theme }) => theme.mixins.boxShadow};
@@ -322,6 +338,7 @@ const Featured = () => {
               tech
               github
               external
+              repo
             }
             html
           }
@@ -354,8 +371,26 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
+            const { external, title, tech, github, cover, repo, cta } = frontmatter;
             const image = getImage(cover);
+
+            const [githubInfo, setGitHubInfo] = useState({
+              stars: null,
+              forks: null,
+            });
+          
+            useEffect(() => {
+              fetch(`https://api.github.com/repos/shweshi/${repo}`)
+                .then(response => response.json())
+                .then(json => {
+                  const { stargazers_count, forks_count } = json;
+                  setGitHubInfo({
+                    stars: stargazers_count,
+                    forks: forks_count,
+                  });
+                })
+                .catch(e => console.error(e));
+            }, []);
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -395,6 +430,18 @@ const Featured = () => {
                         <a href={external} aria-label="External Link" className="external">
                           <Icon name="External" />
                         </a>
+                      )}
+                      {githubInfo.stars && githubInfo.forks && (
+                        <div className="github-stats">
+                          <span>
+                            <Icon name="Star" />
+                            <span style={{ marginTop: '6px' }}>{githubInfo.stars.toLocaleString()}</span>
+                          </span>
+                          <span>
+                            <Icon name="Fork" />
+                            <span style={{ marginTop: '6px' }}>{githubInfo.forks.toLocaleString()}</span>
+                          </span>
+                        </div>
                       )}
                     </div>
                   </div>

@@ -4,6 +4,7 @@ title: 'Terminal Stocks'
 cover: './terminalstocks.png'
 github: 'https://github.com/shweshi/terminal-stocks'
 external: 'https://github.com/shweshi/terminal-stocks'
+repo: 'terminal-stocks'
 tech:
   - Node.js
   - Express

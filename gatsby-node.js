@@ -129,6 +129,16 @@ exports.onPreInit = () => {
 
 exports.onPostBuild = () => {
   fs.renameSync(path.join(__dirname, 'public'), path.join(__dirname, 'docs'));
+  
+  // Create .nojekyll file to disable Jekyll processing on GitHub Pages
+  fs.writeFileSync(path.join(__dirname, 'docs/.nojekyll'), '');
+  
+  // Copy CNAME file to docs directory for GitHub Pages custom domain
+  const cnamePath = path.join(__dirname, 'CNAME');
+  if (fs.existsSync(cnamePath)) {
+    fs.copyFileSync(cnamePath, path.join(__dirname, 'docs/CNAME'));
+  }
+  
   fs.renameSync(
     path.join(__dirname, 'public_dev'),
     path.join(__dirname, 'public'),

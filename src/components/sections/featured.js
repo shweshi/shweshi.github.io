@@ -39,9 +39,7 @@ const StyledProject = styled.li`
     }
   }
 
-  @media (max-width: 768px) {
-    ${({ theme }) => theme.mixins.boxShadow};
-  }
+
 
   &:not(:last-of-type) {
     margin-bottom: 100px;
@@ -179,7 +177,7 @@ const StyledProject = styled.li`
     border: 1px solid var(--navy-shadow);
 
     @media (max-width: 768px) {
-      padding: 20px 0;
+      padding: 20px 15px;
       background-color: transparent;
       box-shadow: none;
 

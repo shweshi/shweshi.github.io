@@ -39,11 +39,13 @@ const StyledTabList = styled.div`
     padding-left: 50px;
     margin-left: -50px;
     margin-bottom: 30px;
+    padding-right: 50px;
   }
   @media (max-width: 480px) {
     width: calc(100% + 50px);
     padding-left: 25px;
     margin-left: -25px;
+    padding-right: 25px;
   }
 
   li {
@@ -80,6 +82,7 @@ const StyledTabButton = styled.button`
   font-size: var(--fz-xs);
   text-align: left;
   white-space: nowrap;
+  transition: var(--transition), border-color 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 
   @media (max-width: 768px) {
     padding: 0 15px 2px;
@@ -89,7 +92,7 @@ const StyledTabButton = styled.button`
     min-width: 120px;
     padding: 0 15px;
     border-left: 0;
-    border-bottom: 2px solid var(--lightest-navy);
+    border-bottom: 2px solid ${({ isActive }) => (isActive ? 'var(--green)' : 'var(--lightest-navy)')};
     text-align: center;
   }
 
@@ -116,7 +119,7 @@ const StyledHighlight = styled.div`
     top: auto;
     bottom: 0;
     width: 100%;
-    max-width: var(--tab-width);
+    max-width: 0;
     height: 2px;
     margin-left: 50px;
     transform: translateX(calc(${({ activeTabId }) => activeTabId} * var(--tab-width)));

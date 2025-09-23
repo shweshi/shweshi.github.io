@@ -109,11 +109,21 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 
 exports.onPreInit = () => {
   if (process.argv[2] === 'build') {
-    fs.rmdirSync(path.join(__dirname, 'docs'), { recursive: true });
-    fs.renameSync(
-      path.join(__dirname, 'public'),
-      path.join(__dirname, 'public_dev'),
-    );
+    const docsPath = path.join(__dirname, 'docs');
+    if (fs.existsSync(docsPath)) {
+      fs.rmSync(docsPath, { recursive: true, force: true });
+    }
+    const publicPath = path.join(__dirname, 'public');
+    const publicDevPath = path.join(__dirname, 'public_dev');
+    if (fs.existsSync(publicDevPath)) {
+      fs.rmSync(publicDevPath, { recursive: true, force: true });
+    }
+    if (fs.existsSync(publicPath)) {
+      fs.renameSync(
+        publicPath,
+        publicDevPath,
+      );
+    }
   }
 };
 

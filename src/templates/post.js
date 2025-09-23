@@ -51,6 +51,26 @@ const StyledPostContent = styled.div`
 `;
 
 const PostTemplate = ({ data, location }) => {
+  if (!data.markdownRemark) {
+    return (
+      <Layout location={location}>
+        <Helmet title="Post Not Found" />
+        <StyledPostContainer>
+          <span className="breadcrumb">
+            <span className="arrow">&larr;</span>
+            <Link to="/pensieve">All memories</Link>
+          </span>
+          <StyledPostHeader>
+            <h1 className="medium-heading">Post Not Found</h1>
+            <p className="subtitle">
+              The post you're looking for doesn't exist or has been moved.
+            </p>
+          </StyledPostHeader>
+        </StyledPostContainer>
+      </Layout>
+    );
+  }
+  
   const { frontmatter, html } = data.markdownRemark;
   const { title, date, tags } = frontmatter;
 

@@ -20,7 +20,7 @@ const StyledHeader = styled.header`
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
-  backdrop-filter: blur(10px);
+  // backdrop-filter: blur(10px);
   transition: var(--transition);
 
   @media (max-width: 1080px) {
@@ -38,6 +38,7 @@ const StyledHeader = styled.header`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
         box-shadow: 0 10px 30px -10px var(--navy-shadow);
+        backdrop-filter: blur(10px);
       `};
 
     ${props =>
@@ -192,7 +193,7 @@ const StyledPic = styled.div`
     &:before {
       top: 0;
       left: 0;
-      background-color: var(--navy);
+      // background-color: var(--navy);
       mix-blend-mode: screen;
     }
   }
@@ -236,7 +237,7 @@ const Nav = ({ isHome }) => {
           <div className="wrapper">
             <StaticImage
               className="img"
-              src="../../images/me.png"
+              src="../images/me.png"
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF', 'PNG']}

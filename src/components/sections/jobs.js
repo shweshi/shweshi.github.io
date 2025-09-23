@@ -8,7 +8,7 @@ import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledJobsSection = styled.section`
-  max-width: 700px;
+  // max-width: 700px;
 
   .inner {
     display: flex;
@@ -247,30 +247,67 @@ const Jobs = () => {
       <h2 className="numbered-heading">Where I’ve Worked</h2>
 
       <div className="inner">
+        {/* Create unique company tabs */}
+        {jobsData && (
+          <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
+            {Array.from(
+              new Map(jobsData.map(({ node }) => [node.frontmatter.company, node.frontmatter.company])).values()
+            ).map((company, i) => (
+              <StyledTabButton
+                key={i}
+                isActive={activeTabId === i}
+                onClick={() => setActiveTabId(i)}
+                ref={el => (tabs.current[i] = el)}
+                id={`tab-${i}`}
+                role="tab"
+                tabIndex={activeTabId === i ? '0' : '-1'}
+                aria-selected={activeTabId === i}
+                aria-controls={`panel-${i}`}>
+                <span>{company}</span>
+              </StyledTabButton>
+            ))}
+            <StyledHighlight activeTabId={activeTabId} />
+          </StyledTabList>
+        )}
+
+        {/* Panels with all jobs grouped by company */}
         <StyledTabPanels>
           {jobsData &&
-            jobsData.map(({ node }, i) => {
-              const { frontmatter, html } = node;
-              const { title, url, company, range } = frontmatter;
+            Array.from(
+              new Map(jobsData.map(({ node }) => [node.frontmatter.company, node.frontmatter.company])).values()
+            ).map((company, i) => {
+              // Filter all jobs for this company
+              const jobsForCompany = jobsData.filter(({ node }) => node.frontmatter.company === company);
 
               return (
                 <CSSTransition key={i} in={activeTabId === i} timeout={250} classNames="fade">
                   <StyledTabPanel
                     id={`panel-${i}`}
-                    role="tabpanel">
-                    <h3>
-                      <span>{title}</span>
-                      <span className="company">
-                        &nbsp;@&nbsp;
-                        <a href={url} className="inline-link">
-                          {company}
-                        </a>
-                      </span>
-                    </h3>
+                    role="tabpanel"
+                    tabIndex={activeTabId === i ? '0' : '-1'}
+                    aria-labelledby={`tab-${i}`}
+                    aria-hidden={activeTabId !== i}
+                    hidden={activeTabId !== i}>
+                    {jobsForCompany.map(({ node }, j) => {
+                      const { title, url, range } = node.frontmatter;
+                      const { html } = node;
 
-                    <p className="range">{range}</p>
-
-                    <div dangerouslySetInnerHTML={{ __html: html }} />
+                      return (
+                        <div key={j} className="job mt-2">
+                          <h3>
+                            <span>{title}</span>
+                            <span className="company">
+                              &nbsp;@&nbsp;
+                              <a href={url} className="inline-link">
+                                {company}
+                              </a>
+                            </span>
+                          </h3>
+                          <p className="range">{range}</p>
+                          <div dangerouslySetInnerHTML={{ __html: html }} />
+                        </div>
+                      );
+                    })}
                   </StyledTabPanel>
                 </CSSTransition>
               );
@@ -278,6 +315,7 @@ const Jobs = () => {
         </StyledTabPanels>
       </div>
     </StyledJobsSection>
+
   );
 };
 

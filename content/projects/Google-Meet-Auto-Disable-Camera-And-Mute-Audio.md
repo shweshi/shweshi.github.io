@@ -10,4 +10,4 @@ tech:
 showInProjects: true
 ---
 
-This simple extension disable the camera and mute the audio.
+This simple extension disable the camera and mute the audio by default.

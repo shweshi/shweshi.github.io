@@ -10,4 +10,4 @@ tech:
 showInProjects: true
 ---
 
-Edit Pad is an easy and clean Online text editor and note-taking tool.
+Edit Pad is an easy and clean and ad-free Online text editor and note-taking tool.

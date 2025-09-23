@@ -6,7 +6,7 @@ import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledAboutSection = styled.section`
-  max-width: 900px;
+  // max-width: 900px;
 
   .inner {
     display: grid;
@@ -95,7 +95,7 @@ const StyledPic = styled.div`
     &:before {
       top: 0;
       left: 0;
-      background-color: var(--navy);
+      // background-color: var(--navy);
       mix-blend-mode: screen;
     }
 

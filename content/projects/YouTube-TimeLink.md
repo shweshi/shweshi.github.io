@@ -9,5 +9,6 @@ tech:
   - JavaScript
 showInProjects: true
 ---
+This tool creates a YouTube link that starts at the exact time you specify.
 
-Simple, clean and ad-free YouTube link generator with start time.
+

@@ -12,4 +12,4 @@ tech:
 showInProjects: true
 ---
 
-Yet another planning poker app for quick and easy estimations.
+Yet another planning poker app with clean UI for quick and easy estimations.

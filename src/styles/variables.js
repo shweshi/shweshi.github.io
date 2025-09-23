@@ -3,10 +3,10 @@ import { css } from 'styled-components';
 const variables = css`
   :root {
     --dark-navy: #020c1b;
-    --navy: #121826;
-    --light-navy: #112240;
-    --lightest-navy: #233554;
-    --navy-shadow: rgba(2, 12, 27, 0.7);
+    --navy: #18181b;
+    --light-navy: #27272b66;
+    --lightest-navy: #27272b;
+    --navy-shadow: #27272a;
     --dark-slate: #495670;
     --slate: #8892b0;
     --light-slate: #a8b2d1;
@@ -31,7 +31,7 @@ const variables = css`
     --fz-xxl: 22px;
     --fz-heading: 32px;
 
-    --border-radius: 4px;
+    --border-radius: 10px;
     --nav-height: 100px;
     --nav-scroll-height: 70px;
 

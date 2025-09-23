@@ -10,4 +10,4 @@ tech:
 showInProjects: true
 ---
 
-A Laravel wrapper for Unsplash.
+A Laravel wrapper for Unsplash API for easy integration with Unsplash.

@@ -80,6 +80,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: var(--fz-xl);
     line-height: 1.3;
 
+    background-image: url(/noise.png);
+    background-size: 200px 200px;
+    background-position: 0 0;
+
     @media (max-width: 480px) {
       font-size: var(--fz-lg);
     }
@@ -210,7 +214,7 @@ const GlobalStyle = createGlobalStyle`
       display: block;
       position: relative;
       top: -5px;
-      width: 300px;
+      width: inherit;
       height: 1px;
       margin-left: 20px;
       background-color: var(--lightest-navy);
@@ -441,6 +445,10 @@ const GlobalStyle = createGlobalStyle`
 
   .gatsby-image-outer-wrapper {
     height: 100%;
+  }
+
+  .job {
+    margin-bottom: 3rem;
   }
 
   ${TransitionStyles};

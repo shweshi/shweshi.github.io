@@ -12,4 +12,4 @@ tech:
 showInProjects: true
 ---
 
-An alternate consul UI build for power users.
+An alternative Consul UI designed specifically for power users seeking advanced features, enhanced control.

@@ -55,7 +55,7 @@ const StyledProject = styled.li`
     }
   }
 
-  &:nth-of-type(odd) {
+  &:nth-of-type(even) {
     .project-content {
       grid-column: 7 / -1;
       text-align: right;
@@ -176,6 +176,7 @@ const StyledProject = styled.li`
     background-color: var(--light-navy);
     color: var(--light-slate);
     font-size: var(--fz-lg);
+    border: 1px solid var(--navy-shadow);
 
     @media (max-width: 768px) {
       padding: 20px 0;
@@ -378,7 +379,7 @@ const Featured = () => {
               stars: null,
               forks: null,
             });
-          
+
             useEffect(() => {
               fetch(`https://api.github.com/repos/shweshi/${repo}`)
                 .then(response => response.json())
@@ -445,12 +446,6 @@ const Featured = () => {
                       )}
                     </div>
                   </div>
-                </div>
-
-                <div className="project-image">
-                  <a href={external ? external : github ? github : '#'}>
-                    <GatsbyImage image={image} alt={title} className="img" />
-                  </a>
                 </div>
               </StyledProject>
             );
